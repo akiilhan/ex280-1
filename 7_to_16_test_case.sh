@@ -1,8 +1,8 @@
 #!/bin/bash
 
 scp -r root@utility:/home/lab/ocp4/auth/kube* .
-x=$(cat /home/student/kubeadmin-password)
-y=$(cat /home/student/kubeconfig | grep server | awk -F" " '{print $2}'|uniq) 
+x=$(cat /home/student/ex280/kubeadmin-password)
+y=$(cat /home/student/ex280/kubeconfig | grep server | awk -F" " '{print $2}'|uniq) 
 oc login -u kubeadmin -p $x $y
 
 
