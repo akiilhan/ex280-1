@@ -21,13 +21,24 @@ done
 project_name=$"bullwinkle"
 oc new-project $project_name
 
+
+
 while [ "$(oc project -q)" != $project_name ]
 
 do
    echo  "$project_name project not found";
    sleep 10;
-   echo  "creating $project_name project";
-   oc login -u kubeadmin -p $x $y;
+   if [ "$(oc login -u kubeadmin -p $x $y)" =="error: You must be logged in to the server (Unauthorized)" ]
+   then
+         echo  "kubeadmin not logged";
+         sleep 10;
+         echo  "kubeadmin  logging";
+         oc login -u kubeadmin -p $x $y;
+   else
+         echo  "creating $project_name project";
+         oc new-project $project_name
+   fi
+   
 
 done
 
@@ -49,7 +60,7 @@ do
    echo  "$project_name project not found";
    sleep 10;
    echo  "creating $project_name project";
-   oc login -u kubeadmin -p $x $y;
+   oc new-project $project_name
 
 done
 echo "gru content" > index.html && oc new-app --name=minion httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build minion --from-dir=./ --follow
@@ -66,7 +77,7 @@ do
    echo  "$project_name project not found";
    sleep 10;
    echo  "creating $project_name project";
-   oc login -u kubeadmin -p $x $y;
+   oc new-project $project_name
 
 done 
 echo "lerna content" > index.html && oc new-app --name=hydra httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build hydra --from-dir=./ --follow
@@ -83,7 +94,7 @@ do
    echo  "$project_name project not found";
    sleep 10;
    echo  "creating $project_name project";
-   oc login -u kubeadmin -p $x $y;
+   oc new-project $project_name
 
 done
 echo "lerna content" > index.html && oc new-app --name=oxcart httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build oxcart --from-dir=./ --follow
@@ -100,8 +111,7 @@ do
    echo  "$project_name project not found";
    sleep 10;
    echo  "creating $project_name project";
-   oc login -u kubeadmin -p $x $y;
-
+   oc new-project $project_name
 done
 echo "math content" > index.html && oc new-app --name=qed httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build qed --from-dir=./ --follow
 oc expose service qed 
@@ -118,7 +128,7 @@ do
    echo  "$project_name project not found";
    sleep 10;
    echo  "creating $project_name project";
-   oc login -u kubeadmin -p $x $y;
+   oc new-project $project_name
 
 done
 echo "apples content" > index.html && oc new-app --name=oranges httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build oranges --from-dir=./ --follow
@@ -135,7 +145,7 @@ do
    echo  "$project_name project not found";
    sleep 10;
    echo  "creating $project_name project";
-   oc login -u kubeadmin -p $x $y;
+   oc new-project $project_name
 
 done
 echo "pathfinder content" > index.html && oc new-app --name=voyager httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build voyager --from-dir=./ --follow
@@ -155,7 +165,7 @@ do
    echo  "$project_name project not found";
    sleep 10;
    echo  "creating $project_name project";
-   oc login -u kubeadmin -p $x $y;
+   oc new-project $project_name
 
 done
 echo "mercury content" > index.html && oc new-app --name=atlas httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build atlas --from-dir=./ --follow
