@@ -34,7 +34,7 @@ done
 
 oc adm taint node master02 key1=value1:NoSchedule
 oc adm taint node master03 key1=value1:NoSchedule
-eecho "bullwinkle content" > index.html && oc new-app --name=rocky httpd  --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build rocky --from-dir=./ --follow
+echo "bullwinkle content" > index.html && oc new-app --name=rocky httpd  --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build rocky --from-dir=./ --follow
 oc expose service rocky
 
 
