@@ -1,9 +1,0 @@
-api_url="https://api.domainXX.example.com:6443" # take from Configuration Information Page
-kube_pass="WdBz8-mLKk9-yVN75-UhaiU"             # take from /root/kubeadmin-password path as mentioned in the Configuration Information Page
-
-#users and their password as mentioned in question
-armstrong="indionce"
-collins="veraster"
-aldrin="roonkere"
-jobs="sestiver"
-wozniak="glegunge"
