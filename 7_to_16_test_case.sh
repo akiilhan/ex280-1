@@ -17,6 +17,7 @@ do
 
 done
 
+sleep 300;
 
 project_name=$"bullwinkle"
 oc new-project $project_name
