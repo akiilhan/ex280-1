@@ -3,10 +3,10 @@
 scp -r root@utility:/home/lab/ocp4/auth/kube* .
 x=$(cat /home/student/ex280/kubeadmin-password)
 y=$(cat /home/student/ex280/kubeconfig | grep server | awk -F" " '{print $2}'|uniq) 
+
+sleep 300;
+
 oc login -u kubeadmin -p $x $y
-
-
-
 while [ "$(oc whoami)" != "kube:admin" ]
 
 do
@@ -19,6 +19,20 @@ done
 
 sleep 300;
 
+oc login -u kubeadmin -p $x $y
+while [ "$(oc whoami)" != "kube:admin" ]
+
+do
+   echo  "kubeadmin not logged";
+   sleep 10;
+   echo  "kubeadmin  logging";
+   oc login -u kubeadmin -p $x $y;
+
+done
+
+
+
+oc login -u kubeadmin -p $x $y
 project_name=$"bullwinkle"
 oc new-project $project_name
 
@@ -29,19 +43,10 @@ while [ "$(oc project -q)" != $project_name ]
 do
    echo  "$project_name project not found";
    sleep 10;
-   if [ "$(oc login -u kubeadmin -p $x $y)" =="error: You must be logged in to the server (Unauthorized)" ]
-   then
-         echo  "kubeadmin not logged";
-         sleep 10;
-         echo  "kubeadmin  logging";
-         oc login -u kubeadmin -p $x $y;
-   else
-         echo  "creating $project_name project";
-         oc new-project $project_name
-   fi
-   
+   echo  "creating $project_name project";
+   oc new-project $project_name
 
-done
+done 
 
 
 oc adm taint node master02 key1=value1:NoSchedule
@@ -171,3 +176,7 @@ do
 done
 echo "mercury content" > index.html && oc new-app --name=atlas httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build atlas --from-dir=./ --follow
 oc expose service atlas
+
+
+
+oc project default
