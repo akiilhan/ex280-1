@@ -11,9 +11,9 @@ while [ "$(oc whoami)" != "kube:admin" ]
 
 do
    echo  "kubeadmin not logged";
-   sleep 10;
    echo  "kubeadmin  logging";
    oc login -u kubeadmin -p $x $y;
+   sleep 60;
 
 done
 
@@ -24,9 +24,9 @@ while [ "$(oc whoami)" != "kube:admin" ]
 
 do
    echo  "kubeadmin not logged";
-   sleep 10;
    echo  "kubeadmin  logging";
    oc login -u kubeadmin -p $x $y;
+   sleep 10;
 
 done
 
