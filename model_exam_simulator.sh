@@ -1,11 +1,14 @@
 #!/bin/bash
 
+#copy kubeadmin password and api to workstation
 scp -r root@utility:/home/lab/ocp4/auth/kube* .
 x=$(cat /home/student/ex280/kubeadmin-password)
 y=$(cat /home/student/ex280/kubeconfig | grep server | awk -F" " '{print $2}'|uniq) 
 
+#since server is slow it will take some time connect
 sleep 300;
 
+#login kubeadmin untill its logged
 oc login -u kubeadmin -p $x $y
 while [ "$(oc whoami)" != "kube:admin" ]
 
@@ -17,21 +20,11 @@ do
 
 done
 
-sleep 300;
-
-oc login -u kubeadmin -p $x $y
-while [ "$(oc whoami)" != "kube:admin" ]
-
-do
-   echo  "kubeadmin not logged";
-   echo  "kubeadmin  logging";
-   oc login -u kubeadmin -p $x $y;
-   sleep 10;
-
-done
+#more waiting time
+sleep 150;
 
 
-
+#cverify the kubeadmin again
 oc login -u kubeadmin -p $x $y
 project_name=$"bullwinkle"
 oc new-project $project_name
