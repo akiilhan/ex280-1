@@ -43,6 +43,7 @@ for i in bullwinkle,rocky gru,minion lerna,hydra area51,oxcart math,qed apples,o
         echo  "creating $project_name project";
         oc new-project $project_name
         sleep 10;
+        oc project $project_name
 
     done
 
