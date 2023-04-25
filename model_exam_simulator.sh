@@ -21,7 +21,7 @@ do
 done
 
 #more waiting time
-sleep 150;
+sleep 200;
 
 
 #cverify the kubeadmin again
@@ -169,6 +169,8 @@ do
 done
 echo "mercury content" > index.html && oc new-app --name=atlas httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build atlas --from-dir=./ --follow
 oc expose service atlas
+
+
 
 
 
