@@ -53,7 +53,7 @@ for i in bullwinkle,rocky gru,minion lerna,hydra area51,oxcart math,qed apples,o
         oc label node master03 start=trick
     fi
     
-    echo "$project_name content" > index.html && oc new-app --name=$app_name  --image=httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build $app_name --from-dir=./ --follow
+    echo "$project_name content" > index.html && oc new-app --name=$app_name  httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build $app_name --from-dir=./ --follow
 
     oc expose service $app_name
 done
