@@ -2,7 +2,7 @@
 oc login -u kubeadmin -p $x $y
 
 for i in bullwinkle,rocky gru,minion lerna,hydra area51,oxcart math,qed apples,oranges pathfinder,voyager mercury,atlas; do 
-    IFS=',' read project_name item2 <<< "${i}"
+    IFS=',' read project_name app_name <<< "${i}"
     echo "${project_name}" and "${app_name}"
 
 

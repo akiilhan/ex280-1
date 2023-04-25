@@ -31,7 +31,7 @@ oc adm taint node master02 key1=value1:NoSchedule
 oc adm taint node master03 key1=value1:NoSchedule
 
 for i in bullwinkle,rocky gru,minion lerna,hydra area51,oxcart math,qed apples,oranges pathfinder,voyager mercury,atlas; do 
-    IFS=',' read project_name item2 <<< "${i}"
+    IFS=',' read project_name app_name <<< "${i}"
     echo "${project_name}" and "${app_name}"
 
 
