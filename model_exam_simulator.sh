@@ -24,154 +24,37 @@ done
 sleep 200;
 
 
-#cverify the kubeadmin again
+#verify the kubeadmin again
 oc login -u kubeadmin -p $x $y
-project_name=$"bullwinkle"
-oc new-project $project_name
-
-
-
-while [ "$(oc project -q)" != $project_name ]
-
-do
-   echo  "$project_name project not found";
-   sleep 10;
-   echo  "creating $project_name project";
-   oc new-project $project_name
-
-done 
-
 
 oc adm taint node master02 key1=value1:NoSchedule
 oc adm taint node master03 key1=value1:NoSchedule
-echo "bullwinkle content" > index.html && oc new-app --name=rocky httpd  --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build rocky --from-dir=./ --follow
-oc expose service rocky
+
+for i in bullwinkle,rocky gru,minion lerna,hydra area51,oxcart math,qed apples,oranges pathfinder,voyager mercury,atlas; do 
+    IFS=',' read project_name item2 <<< "${i}"
+    echo "${project_name}" and "${app_name}"
+    oc new-project $project_name
+    while [ "$(oc project -q)" != $project_name ]
+
+    do
+    echo  "$project_name project not found";
+    echo  "creating $project_name project";
+    oc new-project $project_name
+    sleep 10;
 
 
+    if [ "$(oc project -q)" != "pathfinder"]; then 
+      oc label node master01 start=trick
+      oc label node master02 start=trick
+      oc label node master03 start=trick
+    fi
 
- 
-project_name=$"gru"
-oc new-project $project_name
+    done 
+    echo "$project_name content" > index.html && oc new-app --name=$app_name  nginx:1.21-alpine --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build $app_name --from-dir=./ --follow
 
-while [ "$(oc project -q)" != $project_name ]
 
-do
-   echo  "$project_name project not found";
-   sleep 10;
-   echo  "creating $project_name project";
-   oc new-project $project_name
-
+    oc expose service $app_name
 done
-echo "gru content" > index.html && oc new-app --name=minion httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build minion --from-dir=./ --follow
-oc expose service minion 
-
-
-
-project_name=$"lerna"
-oc new-project $project_name
-
-while [ "$(oc project -q)" != $project_name ]
-
-do
-   echo  "$project_name project not found";
-   sleep 10;
-   echo  "creating $project_name project";
-   oc new-project $project_name
-
-done 
-echo "lerna content" > index.html && oc new-app --name=hydra httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build hydra --from-dir=./ --follow
-oc expose service hydra
-
-
-
-project_name=$"area51"
-oc new-project $project_name
-
-while [ "$(oc project -q)" != $project_name ]
-
-do
-   echo  "$project_name project not found";
-   sleep 10;
-   echo  "creating $project_name project";
-   oc new-project $project_name
-
-done
-echo "lerna content" > index.html && oc new-app --name=oxcart httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build oxcart --from-dir=./ --follow
-oc expose service oxcart
-
-
-
-project_name=$"math"
-oc new-project $project_name
-
-while [ "$(oc project -q)" != $project_name ]
-
-do
-   echo  "$project_name project not found";
-   sleep 10;
-   echo  "creating $project_name project";
-   oc new-project $project_name
-done
-echo "math content" > index.html && oc new-app --name=qed httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build qed --from-dir=./ --follow
-oc expose service qed 
-
-
-
- 
-project_name=$"apples"
-oc new-project $project_name
-
-while [ "$(oc project -q)" != $project_name ]
-
-do
-   echo  "$project_name project not found";
-   sleep 10;
-   echo  "creating $project_name project";
-   oc new-project $project_name
-
-done
-echo "apples content" > index.html && oc new-app --name=oranges httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build oranges --from-dir=./ --follow
-oc expose service oranges 
-
-
-
-project_name=$"pathfinder"
-oc new-project $project_name
-
-while [ "$(oc project -q)" != $project_name ]
-
-do
-   echo  "$project_name project not found";
-   sleep 10;
-   echo  "creating $project_name project";
-   oc new-project $project_name
-
-done
-echo "pathfinder content" > index.html && oc new-app --name=voyager httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build voyager --from-dir=./ --follow
-oc expose service voyager 
-oc label node master01 start=trick
-oc label node master02 start=trick
-oc label node master03 start=trick
-oc expose service voyager 
-
-
-project_name=$"mercury"
-oc new-project $project_name
-
-while [ "$(oc project -q)" != $project_name ]
-
-do
-   echo  "$project_name project not found";
-   sleep 10;
-   echo  "creating $project_name project";
-   oc new-project $project_name
-
-done
-echo "mercury content" > index.html && oc new-app --name=atlas httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build atlas --from-dir=./ --follow
-oc expose service atlas
-
-
-
 
 
 oc project default
