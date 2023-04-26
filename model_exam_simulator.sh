@@ -27,6 +27,7 @@ sleep 200;
 #verify the kubeadmin again
 oc login -u kubeadmin -p $x $y
 
+#since lab doesn't have worker noce adding taint in master node  in exam its worker node
 oc adm taint node master02 key1=value1:NoSchedule
 oc adm taint node master03 key1=value1:NoSchedule
 
@@ -34,7 +35,7 @@ for i in bullwinkle,rocky gru,minion lerna,hydra area51,oxcart math,qed apples,o
     IFS=',' read project_name app_name <<< "${i}"
     echo "${project_name}" and "${app_name}"
 
-
+    #creating projects
     oc new-project $project_name
     while [ "$(oc project -q)" != $project_name ]
 
@@ -53,6 +54,7 @@ for i in bullwinkle,rocky gru,minion lerna,hydra area51,oxcart math,qed apples,o
         oc label node master03 start=trick
     fi
     
+    #creating applicatio of respective projects
     echo "$project_name content" > index.html && oc new-app --name=$app_name  httpd --strategy=source --binary=true --output=yaml | oc apply -f - && oc start-build $app_name --from-dir=./ --follow
 
     oc expose service $app_name
