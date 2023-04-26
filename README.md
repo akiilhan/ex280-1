@@ -34,5 +34,6 @@ if 8 project is listed you are good to go
 
 ## ALL THE BEST 
 
+# EX280 Exam Cerificate
 I have passed the exam on April 10 2023
-
+![EX280 Exam Certified](EX280 Exam Certificate.png)
