@@ -35,5 +35,11 @@ if 8 project is listed you are good to go
 ## ALL THE BEST 
 
 # EX280 Exam Cerificate
-I have passed the exam on April 10 2023
-![EX280 Exam Certified](EX280 Exam Certificate.png)
+I have passed the exam on April 10 2023 [LINK](https://www.credly.com/badges/45ce2f1f-f165-4b63-9847-84b3ad080282/public_url)
+<img src="EX280 Exam Certificate.png" >
+
+
+
+
+
+
