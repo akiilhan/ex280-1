@@ -16,7 +16,14 @@ The user account wozniak can view project titan but not administer or delete it
 ```shell
 oc new-project <project-name>
 ```
-
+To create projects mentioned above
+```shell
+oc new-project apollo
+oc new-project manhattan
+oc new-project gemini
+oc new-project bluebook
+oc new-project titan
+```
 ## Administrator Access for Armstrong
 
 The user account `armstrong` must be granted administrator access for the `apollo` and `gemini` projects. 
