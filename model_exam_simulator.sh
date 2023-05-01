@@ -1,16 +1,17 @@
 #!/bin/bash
 
-
+date
 #copy kubeadmin password and api to workstation
-scp -r root@utility:/home/lab/ocp4/auth/kube* .
-scp -r root@utility:/home/lab/* .
-x=$(cat /home/student/ex280/kubeadmin-password)
-y=$(cat /home/student/ex280/kubeconfig | grep server | awk -F" " '{print $2}'|uniq) 
+mkdir /home/student/copy
+scp -r root@utility:/home/lab/ocp4/auth/kube* /home/student/copy
+scp -r root@utility:/home/lab/* /home/student/copy
+x=$(cat /home/student/copy/kubeadmin-password)
+y=$(cat /home/student/copy/kubeconfig | grep server | awk -F" " '{print $2}'|uniq) 
 
-date+%c
+
 chmod 775 wait_modified.sh
 ./wait_modified.sh
-date+%c
+
 
 #verify the kubeadmin again
 oc login -u kubeadmin -p $x $y
@@ -50,3 +51,4 @@ done
 
 
 oc project default
+date
