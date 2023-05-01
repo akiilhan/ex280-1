@@ -1,10 +1,9 @@
 #!/bin/bash
 
 
-
 #copy kubeadmin password and api to workstation
 scp -r root@utility:/home/lab/ocp4/auth/kube* .
-scp -r root@utility:wait*
+scp -r root@utility:/home/lab/* .
 x=$(cat /home/student/ex280/kubeadmin-password)
 y=$(cat /home/student/ex280/kubeconfig | grep server | awk -F" " '{print $2}'|uniq) 
 
