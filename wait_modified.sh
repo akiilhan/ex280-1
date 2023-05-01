@@ -1,6 +1,6 @@
 #!/bin/sh
 # Set KUBECONFIG
-export KUBECONFIG=/home/student/ex280/kubeconfig
+export KUBECONFIG=/home/student/copy/kubeconfig
 # Wait for API to come online
 until [ $(curl -k -s https://api.ocp4.example.com:6443/version?timeout=10s | jq -r '.major' | grep -v null | wc -l) -eq 1 ]
 do
