@@ -8,7 +8,8 @@ x=$(cat /home/student/ex280/kubeadmin-password)
 y=$(cat /home/student/ex280/kubeconfig | grep server | awk -F" " '{print $2}'|uniq) 
 
 date+%c
-./wait.sh
+chmod 775 wait_modified.sh
+./wait_modified.sh
 date+%c
 
 #verify the kubeadmin again
