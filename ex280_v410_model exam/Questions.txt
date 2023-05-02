@@ -3,11 +3,11 @@
 Configure your OpenShift cluster to use an HTPasswd identity provider with the following requirements:
     The name of the identity provider is: ex280-htpasswd
     The name of the secret is: ex280-idp-secret
-    The user account armstrong="indionce
-    The user account collins="veraster
-    The user account aldrin="roonkere
-    The user account jobs="sestiver
-    The user account wozniak="glegunge
+    The user account armstrong=indionce
+    The user account collins=veraster
+    The user account aldrin=roonkere
+    The user account jobs=sestiver
+    The user account wozniak=glegunge
 
 
 2.Configure cluster permissions
