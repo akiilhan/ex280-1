@@ -8,6 +8,8 @@ Configure the oxcart application in the area51 project with the following requir
 - https://classified.apps.domainXX.example.com
 - The application produces output
 
+- A utility script called newcert has been provided to create the CA signed certificate. You may enter the certificate parameters manually or pass the subject as a parameter.
+- Your certificate signing request will be uploaded to the CA where it will immediately be signed and then downloaded to your current directory.
 
 
 ## First, you need to access the area51 project using the following command:
