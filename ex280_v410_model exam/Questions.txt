@@ -93,7 +93,7 @@ Automatically scale the hydra application deployment configuration in the lerna 
 Configure the oxcart application in the area51 project with the following requirements:
     The application uses a route called oxcart
     The application uses a CA signed certificate with the following subject fields:
-    /C=US/ST=NV/L=Hiko/O=CIA/OU=USAF/CN=classified.apps.domain2.example.com
+    /C=US/ST=NV/L=Hiko/O=CIA/OU=USAF/CN=classified.apps.domainXX.example.com
     The application is reachable only at the following address:
     https://classified.apps.domainXX.example.com
     The application produces output
