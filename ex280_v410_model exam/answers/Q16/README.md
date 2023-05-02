@@ -47,7 +47,7 @@ Pod Template:
   Annotations:	openshift.io/generated-by: OpenShiftNewApp
   Containers:
    atlas:
-    Image:	registry.domain2.example.com/openshift/hello-openshift@sha256:aaea76ff622d2f8bcb32e538e7b3cd0ef6d291953f3e7c9f556c1ba5baf47e2e
+    Image:	registry.domainXX.example.com/openshift/hello-openshift@sha256:aaea76ff622d2f8bcb32e538e7b3cd0ef6d291953f3e7c9f556c1ba5baf47e2e
     Ports:	8080/TCP, 8888/TCP
     Host Ports:	0/TCP, 0/TCP
     Requests:

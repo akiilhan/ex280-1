@@ -69,7 +69,7 @@ Configure your OpenShift cluster to use limits in the bluebook project with the 
 
 Deploy the application called rocky in the bullwinkle project so that the following conditions are true:
     The application is reachable at the following address:
-    http://rocky.apps.domain2.example.com
+    http://rocky.apps.domainXX.example.com
     The application produces output 
 
 
@@ -95,7 +95,7 @@ Configure the oxcart application in the area51 project with the following requir
     The application uses a CA signed certificate with the following subject fields:
     /C=US/ST=NV/L=Hiko/O=CIA/OU=USAF/CN=classified.apps.domain2.example.com
     The application is reachable only at the following address:
-    https://classified.apps.domain2.example.com
+    https://classified.apps.domainXX.example.com
     The application produces output
 
     A utility script called newcert has been provided to create the CA signed certificate. You may enter the certificate parameters manually or pass the subject as a parameter.
