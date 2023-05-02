@@ -23,7 +23,7 @@ oc get all
 ```
 ## deploy service account named `ex280sa` in `oranges` application:
 ```shell
-oc set serviceaccount dc oranges ex280-sa
+oc set serviceaccount dc oranges ex280sa
 ```
 ## Verify resources are present in the project:
 ```shell
