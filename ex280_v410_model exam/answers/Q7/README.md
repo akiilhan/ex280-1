@@ -6,6 +6,10 @@ Deploy the application called rocky in the bullwinkle project so that the follow
 - http://rocky.apps.domainXX.example.com
 - The application produces output
 
+## First get inside the project by following command:
+```shell
+oc project bullwinkle
+```
 ## Check if the required resources are present in the project:
 ```shell
 oc get pods
