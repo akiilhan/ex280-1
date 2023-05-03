@@ -23,11 +23,11 @@ htpasswd -c -B -b </path/to/users.htpasswd> <user_name> <password>
 ```
 Run the following command to create the file named htpasswd-file:
 ```shell
-htpasswd -c -B -b htpasswd-file armstrong indionce
-htpasswd    -B -b htpasswd-file collins veraster
-htpasswd    -B -b htpasswd-file aldrin roonkere
-htpasswd    -B -b htpasswd-file jobs sestiver
-htpasswd    -B -b htpasswd-file wozniak glegunge
+htpasswd -c -B -b htpasswd-file-upload armstrong indionce
+htpasswd    -B -b htpasswd-file-upload collins veraster
+htpasswd    -B -b htpasswd-file-upload aldrin roonkere
+htpasswd    -B -b htpasswd-file-upload jobs sestiver
+htpasswd    -B -b htpasswd-file-upload wozniak glegunge
 ```
 ## Create a `secret` from the `htpasswd-file`:
 ```shell
@@ -35,7 +35,7 @@ oc create secret generic htpass-secret --from-file=htpasswd=<path_to_users.htpas
 ```
 Create a secret named `ex280-idp-secret`
 ```shell
-oc create secret generic ex280-idp-secret --from-file htpasswd=htpasswd-file -n openshift-config 
+oc create secret generic ex280-idp-secret --from-file=htpasswd=htpasswd-file-upload -n openshift-config 
 ```
 ## Download a copy of the `oauth/cluster` resource from your OpenShift cluster:
 ```shell
@@ -57,9 +57,9 @@ copy the content and follow the strps
 ```shell
 vim oauth.yaml
 ```
-`esc`--> type `:set paste` --> `insert` --> `enter` --> then paste the content for correct indent pasting
+`esc`--> type `:set paste` --> `enter` --> `insert`  --> then paste the content for correct indent pasting
 
-then edit the yam file to look like the following 
+then edit the yaml file to look like the following 
 ```yaml
 spec:
   identityProviders:
