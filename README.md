@@ -1,3 +1,4 @@
+
 # ex280 model exam and  exam simulation
 
 This repository contains a set of exam questions and a simulation environment for the EX280 certification exam. These materials are intended to help you prepare for the exam by simulating the exam environment and testing your knowledge of the topics covered in the exam.
@@ -16,10 +17,12 @@ ssh lab@utility
 ```shell
 ./wait.sh
 ```
+it will run for 20+ min 
 ##exit utility
 ```shell
 exit
 ```
+`Finish first 6 question` simulator is from 7th question 
 ## To run the exam-simulator:
 ```shell
 git clone https://github.com/ramanathanmurugappan/ex280
