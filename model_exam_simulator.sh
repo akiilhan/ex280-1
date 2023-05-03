@@ -8,33 +8,8 @@ x=$(cat /home/student/ex280/kubeadmin-password)
 y=$(cat /home/student/ex280/kubeconfig | grep server | awk -F" " '{print $2}'|uniq) 
 
 
-#since server is slow it will take some time connect
-sleep 500;
-#login kubeadmin untill its logged
-oc login -u kubeadmin -p $x $y
-while [ "$(oc whoami)" != "kube:admin" ]
-do
-   echo  "kubeadmin not logged";
-   echo  "kubeadmin  logging";
-   oc login -u kubeadmin -p $x $y;
-   sleep 60;
-done
-#more waiting time
-sleep 200;
 
- oc login -u kubeadmin -p $x $y
- while [ "$(oc whoami)" != "kube:admin" ]
-
- do
-    echo  "kubeadmin not logged";
-    echo  "kubeadmin  logging";
-    oc login -u kubeadmin -p $x $y;
-    sleep 10;
-
- done
-
-
-#verify the kubeadmin again
+#verify the kubeadmin login
 oc login -u kubeadmin -p $x $y
 
 #since lab doesn't have worker noce adding taint in master node  in exam its worker node
