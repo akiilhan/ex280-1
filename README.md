@@ -8,6 +8,18 @@ exam-questions/ - ex280_v410_model exam/Questions.txt directory contains a set o
 
 exam-simulation/ - ex280/model_exam_simulator.sh File simulate environment that replicates the exam environment as closely as possible. 
 
+## login into utility
+```shell
+ssh lab@utility
+```
+## run setup
+```shell
+./wait.sh
+```
+##exit utility
+```shell
+exit
+```
 ## To run the exam-simulator:
 ```shell
 git clone https://github.com/ramanathanmurugappan/ex280
