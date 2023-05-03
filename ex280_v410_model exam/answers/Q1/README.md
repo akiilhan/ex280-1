@@ -41,7 +41,25 @@ oc create secret generic ex280-idp-secret --from-file htpasswd=htpasswd-file -n 
 ```shell
 oc get oauth/cluster -o yaml> oauth.yaml
 ```
-## `Edit the oauth.yaml` file and replace the spec.identityProviders section with the following content:
+## `Edit the oauth.yaml` file and replace the spec.identityProviders section with the help od documentatiom:
+ref: Authentication and authorization document --> 7.1.5. Sample htpasswd CR
+```yaml 
+spec:
+  identityProviders:
+  - name: my_htpasswd_provider 1
+    mappingMethod: claim 2
+    type: HTPasswd
+    htpasswd:
+      fileData:
+        name: htpass-secret 3
+```
+copy the content and follow the strps
+```shell
+vim oauth.yaml
+```
+`esc`--> type `:set paste` --> `insert` --> `enter` --> then paste the content for correct indent pasting
+
+then edit the yam file to look like the following 
 ```yaml
 spec:
   identityProviders:
